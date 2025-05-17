@@ -50,6 +50,9 @@ func (d *DefaultCopyProtection) CheckActivationCode(requestCode string, activati
 }
 
 func (d *DefaultCopyProtection) IsLicensed() (bool, error) {
+	if !d.vault.Exists() {
+		return false, nil
+	}
 	dec, err := d.vault.Read(d.options.AuthCode)
 	if err != nil {
 		return false, err

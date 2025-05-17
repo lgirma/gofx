@@ -7,6 +7,7 @@ import (
 )
 
 type Vault interface {
+	Exists() bool
 	Store(content string, password string) error
 	Read(password string) (string, error)
 }
@@ -18,6 +19,10 @@ type FileVaultOptions struct {
 
 type FileVault struct {
 	filePath string
+}
+
+func (f *FileVault) Exists() bool {
+	return common.FileExists(f.filePath)
 }
 
 func (f *FileVault) Store(content string, password string) error {
