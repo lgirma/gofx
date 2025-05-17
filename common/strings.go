@@ -19,6 +19,14 @@ func GetRandomStr(len int) string {
 	return str[:len]
 }
 
-func IsNullOrEmpty(str string) bool {
-	return len(strings.TrimSpace(str)) == 0
+func TrimOrPadString(input string, targetLength int) string {
+	inputLength := len(input)
+	if inputLength > targetLength {
+		return input[:targetLength]
+	} else if inputLength < targetLength {
+		paddingLength := targetLength - inputLength
+		padding := strings.Repeat("0", paddingLength)
+		return input + padding
+	}
+	return input
 }

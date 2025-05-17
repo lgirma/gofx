@@ -9,9 +9,9 @@ import (
 	"strings"
 )
 
-// GetMotherboardSerial returns the motherboard serial number on Windows.
+// GetHardwareId returns the motherboard serial number on Windows.
 // It first attempts to use wmic, and if that fails, it uses PowerShell's Get-CimInstance.
-func GetMotherboardSerial() (string, error) {
+func GetHardwareId() (string, error) {
 	serial, err := getSerialWmic()
 	if err == nil && serial != "" {
 		return serial, nil
