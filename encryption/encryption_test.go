@@ -1,4 +1,4 @@
-package licensing
+package encryption
 
 import (
 	"encoding/base64"

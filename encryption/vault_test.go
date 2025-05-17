@@ -1,4 +1,4 @@
-package licensing
+package encryption
 
 import (
 	"github.com/lgirma/gofx/common"

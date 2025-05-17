@@ -1,4 +1,4 @@
-package licensing
+package encryption
 
 import (
 	"crypto/aes"

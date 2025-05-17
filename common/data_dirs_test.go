@@ -7,8 +7,12 @@ import (
 
 func TestGetRootDataDirs(t *testing.T) {
 	service := NewDataDirsService()
-	assert.NotEmpty(t, service.GetUserAppDataRootDir())
-	assert.NotEmpty(t, service.GetSystemAppDataRootDir())
+	dir, err := service.GetSystemAppDataRootDir()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, dir)
+	dir, err = service.GetUserAppDataRootDir()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, dir)
 }
 
 func TestGetUserAppDataDir(t *testing.T) {
