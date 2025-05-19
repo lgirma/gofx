@@ -14,12 +14,14 @@ type WebRequestInfo struct {
 }
 
 type CorsOptions struct {
-	AllowAllOrigins bool
-	AllowAllHeaders bool
-	AllowAllMethods bool
-	AllowedOrigins  []string
-	AllowedMethods  []string
-	AllowedHeaders  []string
+	AllowAllOrigins  bool
+	AllowAllHeaders  bool
+	AllowAllMethods  bool
+	ExposeAllHeaders bool
+	AllowedOrigins   []string
+	AllowedMethods   []string
+	AllowedHeaders   []string
+	ExposedHeaders   []string
 }
 
 type WebRequestHandler = func(ctx context.Context)

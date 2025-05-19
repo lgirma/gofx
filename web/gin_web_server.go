@@ -39,6 +39,14 @@ func (server *GinGonicWebServer) SetCorsOptions(options *CorsOptions) {
 	} else {
 		corsConfig.AllowMethods = options.AllowedMethods
 	}
+	if options.ExposeAllHeaders {
+		corsConfig.ExposeHeaders = []string{
+			"Content-Disposition", "Content-Type", "Content-Length",
+			"Accept-Encoding", "X-CSRF-Token",
+		}
+	} else {
+		corsConfig.ExposeHeaders = options.ExposedHeaders
+	}
 	server.engine.Use(cors.New(corsConfig))
 }
 
