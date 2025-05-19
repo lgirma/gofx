@@ -1,7 +1,9 @@
 package common
 
 import (
+	"github.com/ericlagergren/decimal"
 	"github.com/google/uuid"
+	"regexp"
 	"strings"
 )
 
@@ -29,4 +31,46 @@ func TrimOrPadString(input string, targetLength int) string {
 		return input + padding
 	}
 	return input
+}
+
+func GetRegexGroup(re *regexp.Regexp, str string) map[string]string {
+	matches := re.FindAllStringSubmatch(str, -1)
+	groupNames := re.SubexpNames()
+	result := make(map[string]string)
+	if len(matches) > 0 {
+		for i, group := range groupNames {
+			if group == "" {
+				continue
+			}
+			result[group] = matches[0][i]
+		}
+	}
+	return result
+}
+
+func GetRegexGroups(re *regexp.Regexp, str string) []map[string]string {
+	matches := re.FindAllStringSubmatch(str, -1)
+	groupNames := re.SubexpNames()
+	var result []map[string]string
+	if len(matches) > 0 {
+		for _, match := range matches {
+			item := map[string]string{}
+			for i, group := range groupNames {
+				if group == "" {
+					continue
+				}
+				item[group] = match[i]
+			}
+			result = append(result, item)
+		}
+	}
+	return result
+}
+
+func ParseDecimal(str string) *decimal.Big {
+	str = strings.TrimSpace(str)
+	str = strings.ReplaceAll(str, ",", "")
+	d := new(decimal.Big)
+	d, _ = d.SetString(str)
+	return d
 }
