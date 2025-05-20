@@ -34,7 +34,7 @@ func TrimOrPadString(input string, targetLength int) string {
 }
 
 func GetRegexGroup(re *regexp.Regexp, str string) map[string]string {
-	matches := re.FindAllStringSubmatch(str, -1)
+	matches := re.FindStringSubmatch(str)
 	groupNames := re.SubexpNames()
 	result := make(map[string]string)
 	if len(matches) > 0 {
@@ -42,7 +42,7 @@ func GetRegexGroup(re *regexp.Regexp, str string) map[string]string {
 			if group == "" {
 				continue
 			}
-			result[group] = matches[0][i]
+			result[group] = matches[i]
 		}
 	}
 	return result
