@@ -3,14 +3,14 @@ package data
 import "math"
 
 type PageRequest struct {
-	Take int64
-	Page int64
-	Sort []SortInfo
+	Take int64      `json:"take"`
+	Page int64      `json:"page"`
+	Sort []SortInfo `json:"sort"`
 }
 
 type SortInfo struct {
-	ColumnName string
-	IsDesc     bool
+	ColumnName string `json:"columnName"`
+	IsDesc     bool   `json:"isDesc"`
 }
 
 func (page PageRequest) IsSorted(by string, isDesc bool) bool {
@@ -24,15 +24,15 @@ func (page PageRequest) IsSorted(by string, isDesc bool) bool {
 }
 
 type PagedList[T any] struct {
-	TotalCount  int64
-	TotalPages  int64
-	List        []T
-	Take        int64
-	Page        int64
-	Skip        int64
-	HasNext     bool
-	HasPrevious bool
-	LastPage    int64
+	TotalCount  int64 `json:"totalCount"`
+	TotalPages  int64 `json:"totalPages"`
+	List        []T   `json:"list"`
+	Take        int64 `json:"take"`
+	Page        int64 `json:"page"`
+	Skip        int64 `json:"skip"`
+	HasNext     bool  `json:"hasNext"`
+	HasPrevious bool  `json:"hasPrevious"`
+	LastPage    int64 `json:"lastPage"`
 }
 
 func NewPagedList[T any](list []T, totalCount int64, take int64, page int64) *PagedList[T] {
