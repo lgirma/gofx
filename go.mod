@@ -3,6 +3,7 @@ module github.com/lgirma/gofx
 go 1.24.0
 
 require (
+	github.com/ericlagergren/decimal v0.0.0-20240411145413-00de7ca16731
 	github.com/gin-contrib/cors v1.7.5
 	github.com/gin-gonic/gin v1.10.0
 	github.com/google/uuid v1.6.0

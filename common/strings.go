@@ -74,3 +74,7 @@ func ParseDecimal(str string) *decimal.Big {
 	d, _ = d.SetString(str)
 	return d
 }
+
+func IsNullOrEmpty(str string) bool {
+	return len(strings.TrimSpace(str)) == 0
+}
