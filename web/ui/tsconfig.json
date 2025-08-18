@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    // ... other options (like "allowJs": true, "checkJs": true, "noEmit": true)
+  },
+  "include": [
+    "src/**/*.js", // Include your JavaScript files
+    "global.d.ts"
+    // Include your .d.ts file
+  ]
+}
